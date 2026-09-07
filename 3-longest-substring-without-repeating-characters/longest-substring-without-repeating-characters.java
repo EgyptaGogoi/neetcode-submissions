@@ -16,9 +16,6 @@ class Solution {
                     set.remove(s.charAt(l++));
                 set.add(s.charAt(r));
             }
-            // System.out.println(set);
-            // System.out.println("l :" + l );
-            // System.out.println("r :" + r );
             r++;
         }
         if (l<r && mlen < (r-l))
