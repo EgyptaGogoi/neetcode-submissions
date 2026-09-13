@@ -1,12 +1,10 @@
 class Solution {
-    private Set<Integer> set;
-    private Set<Integer> visited;
     
     public int longestConsecutive(int[] nums) {
         if(nums.length == 0) return 0;
-
-        set = new HashSet<>();
-        visited = new HashSet<>();
+        
+        Set<Integer> set = new HashSet<>();
+        Set<Integer> visited = new HashSet<>();
 
         int maxL = 0;
 
