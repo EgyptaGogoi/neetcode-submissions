@@ -7,7 +7,6 @@ class Solution {
         while(i<j){
             int min_height = Math.min(nums[i], nums[j]);
             int curr_v= min_height * (j-i);
-            System.out.println(curr_v);
             max_v = Math.max(curr_v, max_v);
             if(nums[i] > nums[j])
                 j--;
@@ -18,8 +17,3 @@ class Solution {
     }
 }
 
-// max = 8 -> 49
-// 1, 7 = 1 x 8 = 8
-// 8, 7 = 7 x 7 = 49
-// 8, 3 = 3 x 6 = 18
-// 8, 8 = 8 x 5 = 40
