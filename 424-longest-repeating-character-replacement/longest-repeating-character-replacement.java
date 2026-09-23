@@ -1,12 +1,4 @@
 class Solution {
-    public int getMaxFreq(int[] arr){
-        int max = 0;
-        for(int i: arr){
-            if (max < i)
-                max = i;
-        }
-        return max;
-    }
     public int characterReplacement(String s, int k) {
         int[] freq = new int[26];
         int i = 0;
