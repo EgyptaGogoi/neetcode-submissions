@@ -12,7 +12,7 @@ class Solution {
         while(i < nums.length){
            pq.offer(new int[]{nums[i], i});
 
-           while(pq.peek()[1]<= i-k){
+           while(!pq.isEmpty() && pq.peek()[1]<= i-k){
                 pq.poll();
            }
            if(i >= k-1)
