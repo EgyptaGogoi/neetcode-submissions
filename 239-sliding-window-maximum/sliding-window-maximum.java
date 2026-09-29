@@ -1,5 +1,8 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
+        if(nums == null || k <= 0){
+            return new int[0];
+        }
         PriorityQueue <int[]> pq = new PriorityQueue<>((a,b)->b[0]-a[0]);
         int[] ans = new int[nums.length - k +1];
 
