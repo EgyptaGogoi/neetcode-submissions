@@ -2,10 +2,6 @@ class Solution {
     public boolean isValid(String s) {
         if(s.length()%2 == 1)
             return false;
-        Set<Character> set = new HashSet<>();
-        set.add('(');
-        set.add('[');
-        set.add('{');
         Stack<Character> stack = new Stack<>();
         for(int i = 0; i< s.length(); i++){
             char ch = s.charAt(i);
