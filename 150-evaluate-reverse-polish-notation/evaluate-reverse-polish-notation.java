@@ -1,8 +1,7 @@
 class Solution {
     public int evalRPN(String[] tokens) {
         Stack<Integer> ans = new Stack<>();
-        for (int i = 0; i < tokens.length; i++){
-            String ch = tokens[i];
+        for (String ch : tokens){
             if (!ch.equals("+") && !ch.equals("-") &&
     !ch.equals("*") && !ch.equals("/")){
                 ans.push(Integer.parseInt(ch));
