@@ -1,45 +1,44 @@
 class Solution {
     public String minWindow(String s, String t) {
-        if (s.length() < t.length())
+        int m = s.length();
+        int n = t.length();
+        if(m<n)
             return "";
+        HashMap<Character,Integer> ht = new HashMap<>();
+        for(int i = 0; i<n; i++)
+            ht.put(t.charAt(i), ht.getOrDefault(t.charAt(i),0)+1);
 
-        HashMap<Character, Integer> tMap = new HashMap<>();
-        HashMap<Character, Integer> sMap = new HashMap<>();;
-        
-        for(int k =0; k<t.length(); k++){
-            char ch = t.charAt(k);
-            tMap.put(ch, tMap.getOrDefault(ch,0)+1);
-        }
-        int min = Integer.MAX_VALUE;
-        int smli = 0;
+        HashMap<Character,Integer> hs = new HashMap<>();
+        int i = 0;
+        int j = 0;
         int count = 0;
-        int i =0;
-        int j =0;
+        int st = 0;
+        int minLen = Integer.MAX_VALUE;
+        while(j<m){
+            char c = s.charAt(j);
+            hs.put(c, hs.getOrDefault(c,0)+1);
 
-        while(j<s.length()){
-            char ch = s.charAt(j);
-            sMap.put(ch, sMap.getOrDefault(ch,0)+1);
-            
-            if(tMap.containsKey(ch)&& sMap.get(ch)<=tMap.get(ch))
+            if(ht.containsKey(c)&& hs.get(c)<=ht.get(c))
                 count++;
 
-            while(count == t.length()){
-                if(j - i + 1 < min){
-                    min = j - i + 1;
-                    smli = i;
+            while (count == n){
+                if(j - i + 1 < minLen){
+                    minLen = j - i + 1;
+                    st = i;
                 }
-
-                char left = s.charAt(i);
-                if(tMap.containsKey(left)&& sMap.get(left)<=tMap.get(left))
+                
+                char temp = s.charAt(i);
+                if(ht.containsKey(temp) && hs.get(temp) <= ht.get(temp)){
                     count--;
-                sMap.put(left,sMap.get(left)-1);
+                }
                 i++;
+                hs.put(temp, hs.get(temp)-1);
+            }     
 
-            }
             j++;
         }
-        if (min == Integer.MAX_VALUE)
+        if(minLen == Integer.MAX_VALUE )
             return "";
-        return s.substring(smli, smli+min);
+        return s.substring(st, st+minLen);
     }
 }
