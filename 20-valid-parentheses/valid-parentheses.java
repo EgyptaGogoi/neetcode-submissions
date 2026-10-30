@@ -6,16 +6,14 @@ class Solution {
             char c = s.charAt(i);
             if (stack.isEmpty())
                 stack.push(c);
-            else if(c == ')' && stack.peek() == '(')
-                stack.pop();
-            else if(c == ']' && stack.peek() == '[')
-                stack.pop();
-            else if(c == '}' && stack.peek() == '{')
-                stack.pop();
+            else if(((stack.peek() == '(' && c== ')')||
+                (stack.peek() == '[' && c== ']') ||
+                (stack.peek() == '{' && c== '}')))
+                    stack.pop();
             else
                 stack.push(c);
             
         }
-        return stack.isEmpty()?true : false;
+        return stack.isEmpty();
     }
 }
