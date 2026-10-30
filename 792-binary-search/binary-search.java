@@ -10,11 +10,6 @@ class Solution {
         return BS(l, mid-1, nums, target);
     }
     public int search(int[] nums, int target) {
-        // if (nums.length == 1){
-        //     if(nums[0] != target)
-        //         return -1;
-        //     return 0;
-        // }
         return BS(0, nums.length -1, nums, target);
     }
 }
