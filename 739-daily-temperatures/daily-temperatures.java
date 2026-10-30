@@ -1,5 +1,6 @@
 class Solution {
     public int[] dailyTemperatures(int[] temp) {
+        // stack to store indices for the next greater elements
         Deque<Integer> stack = new ArrayDeque<>();
         int l = temp.length;
         int[] ans = new int[l];
