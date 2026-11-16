@@ -9,44 +9,28 @@
  * }
  */
 class Solution {
-    public ListNode merge2Lists(ListNode head1, ListNode head2){
-        ListNode newHead = new ListNode(-1);
-        ListNode curr = newHead;
-        while(head1 != null && head2 != null){
-            if(head1.val <= head2.val){
-                curr.next = head1;
-                curr = curr.next;
-                head1 = head1.next;
-            }
-            else{
-                curr.next = head2;
-                curr = curr.next;
-                head2 = head2.next;
-            }
-        }
-        if(head1 != null){
-            curr.next = head1;
-        }
-
-        if(head2 != null){
-            curr.next = head2;
-        }
-        return newHead.next;
-    }
+    // PQ approach - TC = O(N log K)
     public ListNode mergeKLists(ListNode[] lists) {
-        if(lists.length ==0)
-            return null;
+        PriorityQueue<ListNode> pq = new  PriorityQueue<>((a, b) -> Integer.compare(a.val, b.val));
 
-        if(lists.length ==1)
-            return lists[0];
-
-        ListNode newHead = lists[0];
-
-        for(int i=1; i<lists.length; i++){
-            newHead = merge2Lists(newHead,lists[i]);
+        for(int i =0; i<lists.length; i++){
+            if(lists[i] != null)
+                pq.add(lists[i]);
         }
 
-        return newHead;
+        ListNode head = new ListNode(-1);
+        ListNode curr = head;
+
+        while(!pq.isEmpty()){
+            ListNode node = pq.poll();
+            curr.next = node;
+            curr = curr.next;
+
+            if(node.next != null)
+                pq.add(node.next);
+        }
+
+        return head.next;
     }
 }
 
